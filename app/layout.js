@@ -1,5 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ThemeToggle from "./components/ThemeToggle";
+import SideNav from "./components/SideNav";
+import Navbar from "./components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Admin-Saksham Associates",
+  title: "Admin - Saksham Associates",
   description: "Admin Panel for Saksham Associates website",
   icons: {
     icon: "/images/SALOGO.svg",
@@ -23,6 +26,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* <ThemeToggle/> */}
+        <Navbar/>
+        <SideNav/>
         {children}
       </body>
     </html>

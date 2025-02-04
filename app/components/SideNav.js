@@ -11,9 +11,6 @@ const SideNav = () => {
       <div className='mt-2'>
         <img src="/images/SALogoGreen.png" alt="Logo" className='w-[60px] h-auto rounded-xl'/>
       </div>
-      {/* <div className='w-full flex justify-center items-center mb-5'>
-        <h1 className='text-xl'>Saksham Associates</h1>
-      </div> */}
 
       <ul className='my-5 flex flex-col gap-4 justify-center items-start text-left w-full px-2 text-xl'>
         <li><Link href="\" className='cursor-pointer hover:text-[#d88e6c] px-2 py-1 w-full flex items-center gap-2'><MdDashboard /> Dashboard</Link></li>

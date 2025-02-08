@@ -47,3 +47,19 @@ body, p, span, li {
 .link:hover{
   color: var(--coral);
 }
+
+.row:hover{
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+  background-color: #002528;
+}
+
+.card{
+  background-color: var(--coral);
+  height: 250px;
+  width: 250px;
+  border-radius: 10px;
+}
+
+.card:hover{
+  background-color: #d3815b;
+}

@@ -52,22 +52,22 @@ const handleDelete = async (id) => {
         <table className="my-10">
             <thead>
                 <tr>
-                    <th className="w-[22%]">Name</th>
-                    <th className="w-[8%]">Rating</th>
+                    <th className="w-[20%]">Name</th>
+                    <th className="w-[5%]">Rating</th>
                     <th className="w-[20%]">Role</th>
-                    <th className="w-[50%]">Testimonial</th>
+                    <th className="w-[55%]">Testimonial</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 {data.map((item) => (
-                    <tr key={item.id}>
-                        <td>{item.Name}</td>
-                        <td>{item.Rating} Stars</td>
-                        <td>{item.Role}</td>
-                        <td>{item.Description}</td>
+                    <tr key={item.id} className="row">
+                        <td className="justify-center items-center flex">{item.Name}</td>
+                        <td className="justify-center items-center">{item.Rating} Stars</td>
+                        <td className="justify-center items-center flex">{item.Role}</td>
+                        <td className="justify-center items-center">{item.Description}</td>
                         <td className="flex text-xl justify-center items-center mx-3 my-6">
-                          <MdDelete className="text-xl link" onClick={() => handleDelete(item.id)}/>
+                          <MdDelete className="text-xl link hover:text-red-600" onClick={() => handleDelete(item.id)}/>
                         </td>
                     </tr>
                 ))}

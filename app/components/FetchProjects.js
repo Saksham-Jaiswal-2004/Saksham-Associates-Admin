@@ -5,14 +5,14 @@ import { db } from "../lib/firebase";
 import { doc, deleteDoc } from "firebase/firestore";
 import { MdDelete } from "react-icons/md";
 
-const FetchData = () => {
+const FetchProjects = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, "Queries"));
+        const querySnapshot = await getDocs(collection(db, "Projects"));
         const items = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         setData(items);
       } catch (error) {
@@ -36,7 +36,7 @@ const handleDelete = async (id) => {
     if (!confirmDelete) return;
   
     try {
-      await deleteDoc(doc(db, "Queries", id));
+      await deleteDoc(doc(db, "Projects", id));
       setData((prevData) => prevData.filter((item) => item.id !== id));
       alert("Data deleted successfully!");
     } catch (error) {
@@ -49,25 +49,25 @@ const handleDelete = async (id) => {
 
   return (
     <div className="p-2">
-        <table className="w-full my-10 p-4">
+        <table className="my-10">
             <thead>
                 <tr>
-                    <th className="w-[15%]">Name</th>
-                    <th className="w-[20%]">Email</th>
-                    <th className="w-[12%]">Phone</th>
-                    <th className="w-[50%]">Message</th>
+                    <th className="w-[20%]">Title</th>
+                    <th className="w-[10%]">Date</th>
+                    <th className="w-[20%]">Features</th>
+                    <th className="w-[50%]">Description</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 {data.map((item) => (
                     <tr key={item.id} className="row">
-                        <td className="flex justify-center items-center">{item.name}</td>
-                        <td>{item.email}</td>
-                        <td>{item.phone}</td>
-                        <td>{item.message}</td>
-                        <td className="flex text-xl justify-center items-centermx-3 my-6">
-                          <MdDelete className="text-xl link" onClick={() => handleDelete(item.id)}/>
+                        <td className="justify-center items-center flex">{item.title}</td>
+                        <td className="justify-center items-center">{item.time}</td>
+                        <td className="justify-center items-center flex">{item.features}</td>
+                        <td className="justify-center items-center">{item.description}</td>
+                        <td className="flex text-xl justify-center items-center mx-3 my-6">
+                          <MdDelete className="text-xl link hover:text-red-600" onClick={() => handleDelete(item.id)}/>
                         </td>
                     </tr>
                 ))}
@@ -77,4 +77,4 @@ const handleDelete = async (id) => {
   );
 };
 
-export default FetchData;
+export default FetchProjects

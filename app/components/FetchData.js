@@ -67,7 +67,7 @@ const handleDelete = async (id) => {
                         <td>{item.phone}</td>
                         <td>{item.message}</td>
                         <td className="flex text-xl justify-center items-centermx-3 my-6">
-                          <MdDelete className="text-xl link" onClick={() => handleDelete(item.id)}/>
+                          <MdDelete className="text-xl link hover:text-red-600" onClick={() => handleDelete(item.id)}/>
                         </td>
                     </tr>
                 ))}

@@ -1,5 +1,7 @@
 import React from 'react'
+import Link from 'next/link'
 import FetchTestimonials from '../components/FetchTestimonials'
+import AddButton from '../components/AddButton'
 
 const page = () => {
   return (
@@ -11,6 +13,10 @@ const page = () => {
       <div className='w-[86%] right-0 mt-28'>
         <FetchTestimonials/>
       </div>
+
+      <Link href="/AddTestimonials">
+        <AddButton/>
+      </Link>
     </div>
   )
 }

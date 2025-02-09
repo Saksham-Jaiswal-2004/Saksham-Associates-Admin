@@ -63,3 +63,13 @@ body, p, span, li {
 .card:hover{
   background-color: #d3815b;
 }
+
+.input{
+  background: none;
+  border-bottom: 1px solid var(--beige);
+}
+
+.input:focus{
+  outline: none;
+  border-bottom: 1px solid var(--beige);
+}

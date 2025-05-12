@@ -19,7 +19,7 @@ const Addproject = () => {
 
   return (
     <div className='flex justify-center w-full'>
-      <form action="" className='flex flex-col my-10 p-10 w-[50%]'>
+      <form action="" className='flex flex-col my-0 p-10 w-[50%]'>
         <div className='my-4 flex flex-col'>
           <label htmlFor="title">Title: </label>
           <input type="text" name='title' value={formData.title} onChange={handleChange} placeholder="Enter Project Title"  className='input w-[70%] my-1'/>

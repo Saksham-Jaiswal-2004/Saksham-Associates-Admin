@@ -48,27 +48,29 @@ const handleDelete = async (id) => {
   if (loading) return <div className="flex justify-center items-center"><p>Loading...</p></div>;
 
   return (
-    <div className="p-2">
-        <table className="my-10">
+    <div>
+        <table>
             <thead>
-                <tr>
-                    <th className="w-[20%]">Title</th>
-                    <th className="w-[10%]">Date</th>
-                    <th className="w-[20%]">Features</th>
-                    <th className="w-[50%]">Description</th>
+                <tr className="sticky top-[18.4%] bg-[#051f21]">
+                    <th className="py-4 w-[20%]">Title</th>
+                    <th className="py-4 w-[10%]">Date</th>
+                    <th className="py-4 w-[20%]">Features</th>
+                    <th className="py-4 w-[50%]">Description</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 {data.map((item) => (
                     <tr key={item.id} className="row">
-                        <td className="justify-center items-center flex">{item.title}</td>
-                        <td className="justify-center items-center">{item.time}</td>
-                        <td className="justify-center items-center flex">{item.features}</td>
-                        <td className="justify-center items-center">{item.description}</td>
-                        <td className="flex text-xl justify-center items-center mx-3 my-6">
-                          <MdDelete className="text-xl link hover:text-red-600" onClick={() => handleDelete(item.id)}/>
-                        </td>
+                        <td><div className="justify-center items-center flex">{item.title}</div></td>
+                        <td><div className="justify-center items-center flex">{item.time}</div></td>
+                        <td><div className="justify-center items-center flex">{item.features}</div></td>
+                        <td><div className="justify-center items-center flex">{item.description}</div></td>
+                        <td>
+                <div className="flex justify-center items-center text-xl mx-3 my-6">
+                  <MdDelete className="text-xl link hover:text-red-600" onClick={() => handleDelete(item.id)} />
+                </div>
+              </td>
                     </tr>
                 ))}
             </tbody>

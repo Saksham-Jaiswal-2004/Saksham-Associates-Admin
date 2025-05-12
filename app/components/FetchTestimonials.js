@@ -48,7 +48,7 @@ const FetchTestimonials = () => {
   if (loading) return <div className="flex justify-center items-center"><p>Loading...</p></div>;
 
   return (
-    <div className="py-2">
+    <div>
       <table>
         <thead>
           <tr className="sticky top-[18.4%] bg-[#051f21]">

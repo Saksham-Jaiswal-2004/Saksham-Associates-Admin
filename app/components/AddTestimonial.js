@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import { addTestimonial } from "../lib/AddTest";
 
 const AddTestimonial = () => {
-  const [formData, setFormData] = useState({name: "", rating: 0, role: "", testimonial: ""});
+  const [formData, setFormData] = useState({name: "", rating: "", role: "", testimonial: ""});
   const [status, setStatus] = useState(null);
 
   const handleChange = (e) => {
@@ -26,7 +26,7 @@ const AddTestimonial = () => {
     if (response.success) {
       setStatus("Testimonial added successfully!");
       alert("Testimonial added successfully!");
-      setFormData({ name: "", rating: 0, role: "", testimonial: ""});
+      setFormData({ name: "", rating: "", role: "", testimonial: ""});
     } else {
       setStatus("Error adding testimonial!");
       alert("Failed to add testimonial!");
@@ -36,7 +36,7 @@ const AddTestimonial = () => {
   const handleReset = () => {
     setFormData({
       name: '',
-      rating: 0,
+      rating: "",
       role: '',
       testimonial: '',
     });

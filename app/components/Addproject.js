@@ -94,10 +94,10 @@ const Addproject = () => {
           <textarea name="description" id="description" value={formData.description} onChange={handleChange} placeholder='Enter Description' className='input w-[70%] my-1'></textarea>
         </div>
 
-        {/* {status && <p className="mt-2 text-red-500 font-bold text-xl">{status}</p>} */}
+        {status && <p className="mt-2 text-red-500 font-bold text-xl">{status}</p>}
 
         <div className='my-2 flex gap-5'>
-          <button type='submit' onClick={handleSubmit} className='border px-3 rounded-lg'>Add</button>
+          <button type='submit' onClick={handleSubmit} className='border px-3 rounded-lg hover:bg-[#fff]'>Add</button>
           <button type='reset' onClick={handleReset} className='border px-3 rounded-lg'>Reset</button>
         </div>
       </form>

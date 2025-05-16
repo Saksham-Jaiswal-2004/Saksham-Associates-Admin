@@ -71,7 +71,7 @@ const AddTestimonial = () => {
           <button onClick={handleReset} className='border px-3 rounded-lg'>Reset</button>
         </div>
 
-        {status && <p className="mt-2">{status}</p>}
+        {/* {status && <p className="mt-2">{status}</p>} */}
       </form>
     </div>
   )

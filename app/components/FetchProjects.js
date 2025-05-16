@@ -25,7 +25,7 @@ const FetchProjects = () => {
     fetchData();
   }, []);
 
-const handleDelete = async (id) => {
+  const handleDelete = async (id) => {
     if (!id || typeof id !== "string") {
       console.error("Invalid ID format:", id);
       alert("Error: Invalid document ID");
@@ -34,7 +34,7 @@ const handleDelete = async (id) => {
 
     const confirmDelete = window.confirm("Are you sure you want to delete this?");
     if (!confirmDelete) return;
-  
+
     try {
       await deleteDoc(doc(db, "Projects", id));
       setData((prevData) => prevData.filter((item) => item.id !== id));
@@ -49,32 +49,34 @@ const handleDelete = async (id) => {
 
   return (
     <div>
-        <table>
-            <thead>
-                <tr className="sticky top-[18.4%] bg-[#051f21]">
-                    <th className="py-4 w-[20%]">Title</th>
-                    <th className="py-4 w-[10%]">Date</th>
-                    <th className="py-4 w-[20%]">Features</th>
-                    <th className="py-4 w-[50%]">Description</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {data.map((item) => (
-                    <tr key={item.id} className="row">
-                        <td><div className="justify-center items-center flex">{item.title}</div></td>
-                        <td><div className="justify-center items-center flex">{item.time}</div></td>
-                        <td><div className="justify-center items-center flex">{item.features}</div></td>
-                        <td><div className="justify-center items-center flex">{item.description}</div></td>
-                        <td>
+      <table>
+        <thead>
+          <tr className="sticky top-[18.4%] bg-[#051f21]">
+            <th className="py-4 w-[20%]">Title</th>
+            <th className="py-4 w-[10%]">Category</th>
+            <th className="py-4 w-[20%]">Handover Date</th>
+            <th className="py-4 w-[20%]">Location</th>
+            <th className="py-4 w-[50%]">Description</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item) => (
+            <tr key={item.id} className="row">
+              <td><div className="justify-center items-center flex">{item.title}</div></td>
+              <td><div className="justify-center items-center flex">{item.category}</div></td>
+              <td><div className="justify-center items-center flex">{new Date(`${item.time}-01`).toLocaleString("default", { month: "short", year: "numeric" })}</div></td>
+              <td><div className="justify-center items-center flex">{item.location}</div></td>
+              <td><div className="justify-center items-center flex">{item.description.length > 150 ? `${item.description.substring(0, 150)}...` : item.description}</div></td>
+              <td>
                 <div className="flex justify-center items-center text-xl mx-3 my-6">
                   <MdDelete className="text-xl link hover:text-red-600" onClick={() => handleDelete(item.id)} />
                 </div>
               </td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

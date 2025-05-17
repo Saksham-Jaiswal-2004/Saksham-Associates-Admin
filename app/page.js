@@ -4,7 +4,7 @@ import { db } from "../app/lib/firebase";
 import { collection, getCountFromServer } from "firebase/firestore";
 import Link from 'next/link'
 
-const page = () => {
+const Page = () => {
 
   const [testimonialCount, setTestimonialCount] = useState(null);
   const [userCount, setUserCount] = useState(null);
@@ -30,31 +30,31 @@ const page = () => {
   }, []);
 
   return (
-    <div className='h-screen w-full flex items-center justify-center'>
-      <div className='w-[86%] fixed top-12 right-0 p-4 bg-[#041c1e] shadow-2xl'>
-        <h1 className='text-3xl'>Dashboard</h1>
+    <div className='h-screen flex items-start justify-start flex-col ml-[12.2rem] w-[86%]'>
+      <div className='w-full p-4 bg-[#041c1e] shadow-2xl'>
+        <h1 className='text-3xl'>Admin Dashboard</h1>
       </div>
 
-      <div className='flex justify-center items-center gap-8 w-[86%] fixed top-40 right-0 p-4'>
+      <div className='flex justify-center items-start gap-4 w-full p-4'>
 
         <Link href="/Projects">
-        <div className='card p-4 flex flex-col justify-evenly items-center'>
-          <h1 className="text-lg">Projects Added</h1>
-          <p className="text-4xl">{projectCount !== null ? projectCount : "Loading..."}</p>
+        <div className='card p-4 flex flex-col justify-start items-start'>
+          <h1 className="text-[1em]">Total Projects:</h1>
+          <p className="text-7xl w-full flex justify-center items-center h-full">{projectCount !== null ? projectCount : "Loading..."}</p>
         </div>
         </Link>
 
         <Link href="/Testimonials">
-        <div className='card p-4 flex flex-col justify-evenly items-center'>
-          <h1 className="text-lg">Testimonials Registered</h1>
-          <p className="text-4xl">{testimonialCount !== null ? testimonialCount : "Loading..."}</p>
+        <div className='card p-4 flex flex-col justify-start items-start'>
+          <h1 className="text-[1em]">Testimonials Registered:</h1>
+          <p className="text-7xl w-full flex justify-center items-center h-full">{testimonialCount !== null ? testimonialCount : "Loading..."}</p>
         </div>
         </Link>
 
         <Link href="/User">
-        <div className='card p-4 flex flex-col justify-evenly items-center'>
-          <h1 className="text-lg">Queries Asked</h1>
-          <p className="text-4xl">{userCount !== null ? userCount : "Loading..."}</p>
+        <div className='card p-4 flex flex-col justify-start items-start'>
+          <h1 className="text-[1em]">Queries Asked:</h1>
+          <p className="text-7xl w-full flex justify-center items-center h-full">{userCount !== null ? userCount : "Loading..."}</p>
         </div>
         </Link>
       </div>
@@ -62,4 +62,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

@@ -67,7 +67,7 @@ const Addproject = () => {
 
         <div className='flex flex-wrap w-full gap-10'>
           <div className='my-4 flex justify-start items-center gap-4 w-[40%]'>
-            <label htmlFor="date">Month, Year: </label>
+            <label htmlFor="date">Handover: </label>
             <input type="month" name="time" id="time" value={formData.time} onChange={handleChange} placeholder='Enter Month and Year of completion' className='input w-[65%] my-1' />
           </div>
 

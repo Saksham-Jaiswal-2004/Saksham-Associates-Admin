@@ -4,6 +4,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../lib/firebase";
 import { doc, deleteDoc } from "firebase/firestore";
 import { MdDelete } from "react-icons/md";
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
 const FetchData = () => {
   const [data, setData] = useState([]);
@@ -45,13 +46,13 @@ const FetchData = () => {
     }
   };
 
-  if (loading) return <div className="flex justify-center items-center"><p>Loading...</p></div>;
+  if (loading) return <div className="flex justify-center items-center"><p className="h-[80vh] flex justify-center items-center">Loading...</p></div>;
 
   return (
     <div>
       <table className="w-full py-2">
         <thead>
-          <tr className="sticky top-[18.4%] bg-[#051f21]">
+          <tr className="sticky top-16 bg-[#051f21]">
             <th className="w-[10%] py-4">Submitted On</th>
             <th className="w-[20%] py-4">Name</th>
             <th className="w-[20%] py-4">Email</th>
@@ -71,7 +72,7 @@ const FetchData = () => {
                 })}</div></td>
               <td><div className="justify-center items-center flex">{item.name}</div></td>
               <td><div className="justify-center items-center flex">{item.email}</div></td>
-              <td><div className="justify-center items-center flex">{item.phone}</div></td>
+              <td><div className="justify-center items-center flex">+{parsePhoneNumberFromString(item.phone).countryCallingCode}-{parsePhoneNumberFromString(item.phone).nationalNumber}</div></td>
               <td><div className="justify-center items-center flex">{item.message}</div></td>
               <td>
                 <div className="flex justify-center items-center text-xl mx-3 my-6">

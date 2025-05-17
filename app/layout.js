@@ -26,8 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* <ThemeToggle/> */}
-        <Navbar/>
+        {/* <Navbar/> */}
         <SideNav/>
         {children}
       </body>

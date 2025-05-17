@@ -45,13 +45,13 @@ const FetchProjects = () => {
     }
   };
 
-  if (loading) return <div className="flex justify-center items-center"><p>Loading...</p></div>;
+  if (loading) return <div className="flex justify-center items-center"><p className="h-[80vh] flex justify-center items-center">Loading...</p></div>;
 
   return (
     <div>
       <table>
         <thead>
-          <tr className="sticky top-[18.4%] bg-[#051f21]">
+          <tr className="sticky top-16 bg-[#051f21]">
             <th className="py-4 w-[20%]">Title</th>
             <th className="py-4 w-[10%]">Category</th>
             <th className="py-4 w-[20%]">Handover Date</th>

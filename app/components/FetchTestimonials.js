@@ -45,13 +45,13 @@ const FetchTestimonials = () => {
     }
   };
 
-  if (loading) return <div className="flex justify-center items-center"><p>Loading...</p></div>;
+  if (loading) return <div className="flex justify-center items-center"><p className="h-[80vh] flex justify-center items-center">Loading...</p></div>;
 
   return (
     <div>
       <table>
         <thead>
-          <tr className="sticky top-[18.4%] bg-[#051f21]">
+          <tr className="sticky top-16 bg-[#051f21]">
             <th className="py-4 w-[10%]">Created On</th>
             <th className="py-4 w-[20%]">Name</th>
             <th className="py-4 w-[5%]">Rating</th>

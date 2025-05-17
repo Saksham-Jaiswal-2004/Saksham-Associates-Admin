@@ -72,7 +72,7 @@ const FetchTestimonials = () => {
               <td><div className="justify-center items-center flex h-fit py-4">{item.name}</div></td>
               <td><div className="justify-center items-center flex h-fit py-4">{item.rating}⭐</div></td>
               <td><div className="justify-center items-center flex h-fit py-4">{item.role}</div></td>
-              <td><div className="justify-center items-center flex h-fit py-4">{item.testimonial}</div></td>
+              <td><div className="justify-center items-center flex h-fit py-4">{item.testimonial.length > 150 ? `${item.testimonial.substring(0, 150)}...` : item.testimonial}</div></td>
               <td>
                 <div className="flex justify-center items-center text-xl mx-3 my-6">
                   <MdDelete className="text-xl link hover:text-red-600" onClick={() => handleDelete(item.id)} />

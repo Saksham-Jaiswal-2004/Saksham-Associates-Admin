@@ -78,11 +78,6 @@ const Addproject = () => {
         </div>
 
         <div className='flex flex-wrap w-full gap-10'>
-          {/* <div className='my-4 flex justify-start items-center gap-4 w-[40%]'>
-            <label htmlFor="features">Features: </label>
-            <input type="text" name='features' value={formData.features} onChange={handleChange} placeholder="Search Project's Features" className='input w-[70%] my-1' />
-          </div> */}
-
           <div className='my-4 flex justify-start items-center gap-4 w-[40%]'>
             <label htmlFor="features">Images: </label>
             <input type="file" id="images" name="images[]" accept="image/*" className='input w-[70%] my-1' multiple></input>

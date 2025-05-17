@@ -37,6 +37,23 @@ body, p, span, li {
   font-family: 'Lato', sans-serif;
 }
 
+.navBtn1 {
+  color: var(--deep-green);
+  background-color: var(--beige);
+}
+
+.sideNavBtn {
+  width: 9.5em;
+  transition: all 0.15s ease-in-out;
+}
+
+.sideNavBtn:hover{
+  background-color: var(--beige);
+  color: var(--deep-green);
+  border-radius: 5em;
+  transform: scale(1.05);
+}
+
 .link:hover{
   color: var(--coral);
 }

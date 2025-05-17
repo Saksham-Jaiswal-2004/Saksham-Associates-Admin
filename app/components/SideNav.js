@@ -13,10 +13,10 @@ const SideNav = () => {
       </div>
 
       <ul className='my-8 flex flex-col gap-2 justify-center items-start text-left w-full px-2 text-lg'>
-        <li><Link href="\" className='cursor-pointer hover:text-[#d88e6c] px-2 py-1 w-full flex items-center gap-2'><MdDashboard /> Dashboard</Link></li>
-        <li><Link href="\Projects" className='cursor-pointer hover:text-[#d88e6c] px-2 py-1 w-full flex items-center gap-2'><GoProjectSymlink /> Projects</Link></li>
-        <li><Link href="\Testimonials" className='cursor-pointer hover:text-[#d88e6c] px-2 py-1 w-full flex items-center gap-2'><MdRateReview /> Testimonials</Link></li>
-        <li><Link href="\User" className='cursor-pointer hover:text-[#d88e6c] px-2 py-1 w-full flex items-center gap-2'><FaClipboardUser /> User Data</Link></li>
+        <li><Link href="\" className='cursor-pointer sideNavBtn px-2 py-1 w-full flex items-center gap-2'><MdDashboard /> Dashboard</Link></li>
+        <li><Link href="\Projects" className='cursor-pointer sideNavBtn px-2 py-1 w-full flex items-center gap-2'><GoProjectSymlink /> Projects</Link></li>
+        <li><Link href="\Testimonials" className='cursor-pointer sideNavBtn px-2 py-1 w-full flex items-center gap-2'><MdRateReview /> Testimonials</Link></li>
+        <li><Link href="\User" className='cursor-pointer sideNavBtn px-2 py-1 w-full flex items-center gap-2'><FaClipboardUser /> User Data</Link></li>
       </ul>
     </div>
   )

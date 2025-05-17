@@ -3,16 +3,16 @@ import React, { useState, useRef } from 'react';
 import { addTestimonial } from "../lib/AddTest";
 
 const AddTestimonial = () => {
-  const [formData, setFormData] = useState({name: "", rating: "", role: "", testimonial: ""});
+  const [formData, setFormData] = useState({ name: "", rating: "", role: "", testimonial: "" });
   const [status, setStatus] = useState(null);
 
   const handleChange = (e) => {
-    setFormData({ 
-      ...formData, 
-      [e.target.name]: e.target.name === "rating" ? Number(e.target.value) : e.target.value 
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.name === "rating" ? Number(e.target.value) : e.target.value
     });
   };
-  
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,12 +21,12 @@ const AddTestimonial = () => {
       setStatus("❌ Please fill in all fields correctly.");
       return;
     }
-    
+
     const response = await addTestimonial(formData.name, formData.rating, formData.role, formData.testimonial);
     if (response.success) {
       setStatus("Testimonial added successfully!");
       alert("Testimonial added successfully!");
-      setFormData({ name: "", rating: "", role: "", testimonial: ""});
+      setFormData({ name: "", rating: "", role: "", testimonial: "" });
     } else {
       setStatus("Error adding testimonial!");
       alert("Failed to add testimonial!");
@@ -46,19 +46,24 @@ const AddTestimonial = () => {
   return (
     <div className='flex justify-center w-full'>
       <form action="" className='flex flex-col my-0 px-10 w-[50%]'>
+        <div className='my-4 flex justify-start items-center gap-4 w-[70%]'>
+          <label htmlFor="features">Client Image: </label>
+          <input type="file" id="image" name="image" accept="image/*" className='input w-[70%] my-1'></input>
+        </div>
+
         <div className='my-4 flex flex-col'>
           <label htmlFor="name">Name: </label>
-          <input type="text" name='name' value={formData.name} onChange={handleChange} placeholder="Enter Client's Name"  className='input w-[70%] my-1'/>
+          <input type="text" name='name' value={formData.name} onChange={handleChange} placeholder="Enter Client's Name" className='input w-[70%] my-1' />
         </div>
 
         <div className='my-4 flex flex-col'>
           <label htmlFor="rating">Rating: </label>
-          <input type="number" name="rating" id="rating" value={formData.rating} onChange={handleChange} placeholder='Enter Rating (1-5)' min="1" max="5" className='input w-[70%] my-1'/>
+          <input type="number" name="rating" id="rating" value={formData.rating} onChange={handleChange} placeholder='Enter Rating (1-5)' min="1" max="5" className='input w-[70%] my-1' />
         </div>
 
         <div className='my-4 flex flex-col'>
           <label htmlFor="role">Role: </label>
-          <input type="text" name='role' value={formData.role} onChange={handleChange} placeholder="Enter Client's Job" className='input w-[70%] my-1'/>
+          <input type="text" name='role' value={formData.role} onChange={handleChange} placeholder="Enter Client's Job" className='input w-[70%] my-1' />
         </div>
 
         <div className='my-4 flex flex-col'>

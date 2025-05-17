@@ -40,7 +40,7 @@ const Page = () => {
               <button className='text-base'>Add Testimonial</button>
             </div>
           </Link>
-          <Link href="/AddTestimonials">
+          <Link href="/AddProjects">
             <div className='h-fit w-fit bg-[#495a54] hover:bg-[#d88e6c] hover:text-[#00292e] py-2 px-3 rounded-2xl'>
               <button className='text-base'>Add Projects</button>
             </div>

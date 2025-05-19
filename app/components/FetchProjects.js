@@ -49,7 +49,7 @@ const FetchProjects = () => {
 
   return (
     <div>
-      <table>
+      <table className="border-separate border-spacing-y-6 mx-4">
         <thead>
           <tr className="sticky top-16 bg-[#051f21]">
             <th className="py-4 w-[20%]">Title</th>
@@ -62,14 +62,14 @@ const FetchProjects = () => {
         </thead>
         <tbody>
           {data.map((item) => (
-            <tr key={item.id} className="row">
-              <td><div className="justify-center items-center flex">{item.title}</div></td>
-              <td><div className="justify-center items-center flex">{item.category}</div></td>
-              <td><div className="justify-center items-center flex">{new Date(`${item.time}-01`).toLocaleString("default", { month: "short", year: "numeric" })}</div></td>
-              <td><div className="justify-center items-center flex">{item.location}</div></td>
-              <td><div className="justify-center items-center flex">{item.description.length > 150 ? `${item.description.substring(0, 150)}...` : item.description}</div></td>
-              <td>
-                <div className="flex justify-center items-center text-xl mx-3 my-6">
+            <tr key={item.id} className="row rounded-[2rem] my-8">
+              <td className="rounded-l-[2rem]"><div className="py-0 my-2 justify-center items-center flex">{item.title}</div></td>
+              <td><div className="py-0 my-2 justify-center items-center flex">{item.category}</div></td>
+              <td><div className="py-0 my-2 justify-center items-center flex">{new Date(`${item.time}-01`).toLocaleString("default", { month: "short", year: "numeric" })}</div></td>
+              <td><div className="py-0 my-2 justify-center items-center flex">{item.location}</div></td>
+              <td><div className="py-0 my-2 justify-center items-center flex">{item.description.length > 150 ? `${item.description.substring(0, 150)}...` : item.description}</div></td>
+              <td className="rounded-r-[2rem]">
+                <div className="flex justify-center items-center text-xl mx-3 my-2">
                   <MdDelete className="text-xl link hover:text-red-600" onClick={() => handleDelete(item.id)} />
                 </div>
               </td>

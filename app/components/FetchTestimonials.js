@@ -49,7 +49,7 @@ const FetchTestimonials = () => {
 
   return (
     <div>
-      <table>
+      <table className="border-separate border-spacing-y-6 mx-4">
         <thead>
           <tr className="sticky top-16 bg-[#051f21]">
             <th className="py-4 w-[10%]">Created On</th>
@@ -62,19 +62,19 @@ const FetchTestimonials = () => {
         </thead>
         <tbody>
           {data.map((item) => (
-            <tr key={item.id} className="row h-fit">
-              <td><div className="justify-center items-center flex h-fit py-4">
+            <tr key={item.id} className="row rounded-[2rem] my-0">
+              <td className="rounded-l-[2rem]"><div className="justify-center items-center flex h-fit py-4 my-2">
                 {item.createdAt?.toDate().toLocaleString("en-IN", {
                   dateStyle: "medium",
                   timeStyle: "short",
                   timeZone: "Asia/Kolkata"
                 })}</div></td>
-              <td><div className="justify-center items-center flex h-fit py-4">{item.name}</div></td>
-              <td><div className="justify-center items-center flex h-fit py-4">{item.rating}⭐</div></td>
-              <td><div className="justify-center items-center flex h-fit py-4">{item.role}</div></td>
-              <td><div className="justify-center items-center flex h-fit py-4">{item.testimonial.length > 150 ? `${item.testimonial.substring(0, 150)}...` : item.testimonial}</div></td>
-              <td>
-                <div className="flex justify-center items-center text-xl mx-3 my-6">
+              <td><div className="justify-center items-center flex h-fit py-4 my-2">{item.name}</div></td>
+              <td><div className="justify-center items-center flex h-fit py-4 my-2">{item.rating}⭐</div></td>
+              <td><div className="justify-center items-center flex h-fit py-4 my-2">{item.role}</div></td>
+              <td><div className="justify-center items-center flex h-fit py-4 my-2">{item.testimonial.length > 150 ? `${item.testimonial.substring(0, 150)}...` : item.testimonial}</div></td>
+              <td className="rounded-r-[2rem]">
+                <div className="flex justify-center items-center text-xl mx-3 my-2">
                   <MdDelete className="text-xl link hover:text-red-600" onClick={() => handleDelete(item.id)} />
                 </div>
               </td>

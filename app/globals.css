@@ -54,13 +54,25 @@ body, p, span, li {
   transform: scale(1.05);
 }
 
+.active {
+  background-color: var(--beige);
+  color: var(--deep-green);
+  border-radius: 5em;
+  transform: scale(1.05);
+}
+
 .link:hover{
   color: var(--coral);
 }
 
+.row{
+  margin-top: 3em;
+  background-color: var(--coral);
+}
+
 .row:hover{
   box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
-  background-color: #002528;
+  background-color: #d3815d;
 }
 
 .card{

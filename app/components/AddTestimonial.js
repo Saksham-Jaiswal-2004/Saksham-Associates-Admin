@@ -1,10 +1,15 @@
 "use client"
 import React, { useState, useRef } from 'react';
 import { addTestimonial } from "../lib/AddTest";
+import { handleImageUpload } from '../lib/uploadHandler';
 
 const AddTestimonial = () => {
   const [formData, setFormData] = useState({ name: "", rating: "", role: "", testimonial: "" });
   const [status, setStatus] = useState(null);
+  const [images, setImages] = useState([]);
+  const [previewUrls, setPreviewUrls] = useState([]);
+  const folder = "Clients"
+  const [message, setMessage] = useState('');
 
   const handleChange = (e) => {
     setFormData({
@@ -13,6 +18,11 @@ const AddTestimonial = () => {
     });
   };
 
+  const handleImgChange = (e) => {
+    const files = Array.from(e.target.files);
+    setImages(files);
+    setPreviewUrls(files.map(file => URL.createObjectURL(file)));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +32,18 @@ const AddTestimonial = () => {
       return;
     }
 
+     // Upload image and get URLs
+    const uploadedUrls = await handleImageUpload({
+      images,
+      folder,
+      setMessage,
+      resetForm: handleReset,
+    });
+
+    console.log("Uploaded image URLs:", uploadedUrls);
+
     const response = await addTestimonial(formData.name, formData.rating, formData.role, formData.testimonial);
+
     if (response.success) {
       setStatus("Testimonial added successfully!");
       alert("Testimonial added successfully!");
@@ -40,15 +61,17 @@ const AddTestimonial = () => {
       role: '',
       testimonial: '',
     });
-    setStatus(null)
+    setStatus(null);
+    setImages([]);
+    setPreviewUrls([]);
   };
 
   return (
     <div className='flex justify-center w-full'>
-      <form action="" className='flex flex-col my-0 px-10 w-[50%]'>
+      <form action="" onSubmit={handleSubmit} className='flex flex-col my-0 px-10 w-[50%]'>
         <div className='my-4 flex justify-start items-center gap-4 w-[70%]'>
           <label htmlFor="features">Client Image: </label>
-          <input type="file" id="image" name="image" accept="image/*" className='input w-[70%] my-1'></input>
+          <input type="file" id="image" name="image" onChange={handleImgChange} accept="image/*" className='input w-[70%] my-1'></input>
         </div>
 
         <div className='my-4 flex flex-col'>
@@ -72,7 +95,7 @@ const AddTestimonial = () => {
         </div>
 
         <div className='my-2 flex gap-5'>
-          <button onClick={handleSubmit} className='border px-3 rounded-lg'>Add</button>
+          <button type='submit' className='border px-3 rounded-lg'>Add</button>
           <button onClick={handleReset} className='border px-3 rounded-lg'>Reset</button>
         </div>
 

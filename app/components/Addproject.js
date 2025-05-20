@@ -1,7 +1,6 @@
 "use client"
 import React, { useState, useRef } from 'react';
 import { addProject } from '../lib/AddProject'
-import { Autocomplete } from "@react-google-maps/api";
 
 const Addproject = () => {
   const [formData, setFormData] = useState({ title: "", category: "", time: "", location: "", description: "" });
@@ -92,8 +91,8 @@ const Addproject = () => {
         {status && <p className="mt-2 text-red-500 font-bold text-xl">{status}</p>}
 
         <div className='my-2 flex gap-5'>
-          <button type='submit' onClick={handleSubmit} className='border px-3 rounded-lg hover:bg-[#fff]'>Add</button>
-          <button type='reset' onClick={handleReset} className='border px-3 rounded-lg'>Reset</button>
+          <button type='submit' onClick={handleSubmit} className='border formBtn rounded-lg'>Add</button>
+          <button type='reset' onClick={handleReset} className='border formBtn rounded-lg'>Reset</button>
         </div>
       </form>
     </div>

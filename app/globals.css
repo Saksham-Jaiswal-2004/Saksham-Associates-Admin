@@ -95,3 +95,27 @@ body, p, span, li {
   outline: none;
   border-bottom: 1px solid var(--beige);
 }
+
+.userAvatar {
+  border: 1px solid gray;
+  width: 90%;
+  margin: 1.5em 0em;
+  padding: 0.5em;
+  border-radius: 8px;
+  background-color: var(--teal);
+  transition: all 0.2s ease-in-out;
+}
+
+.userAvatar:hover{
+  background-color: var(--green);
+  color: var(--brown);
+}
+
+.formBtn {
+  padding: 0.3em 1.2em;
+  transition: all 0.2s ease-in-out;
+}
+
+.formBtn:hover{
+  background: #495A54;
+}

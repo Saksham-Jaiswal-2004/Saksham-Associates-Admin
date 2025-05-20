@@ -1,14 +1,14 @@
-"use client"
-import React, { useState, useRef } from 'react';
+"use client";
+import React, { useState } from 'react';
+import axios from 'axios';
 import { addTestimonial } from "../lib/AddTest";
-import { handleImageUpload } from '../lib/uploadHandler';
 
 const AddTestimonial = () => {
   const [formData, setFormData] = useState({ name: "", rating: "", role: "", testimonial: "" });
   const [status, setStatus] = useState(null);
   const [images, setImages] = useState([]);
   const [previewUrls, setPreviewUrls] = useState([]);
-  const folder = "Clients"
+  const folder = "Clients";
   const [message, setMessage] = useState('');
 
   const handleChange = (e) => {
@@ -24,6 +24,31 @@ const AddTestimonial = () => {
     setPreviewUrls(files.map(file => URL.createObjectURL(file)));
   };
 
+  const handleImageUpload = async ({ images, folder }) => {
+    const urls = [];
+
+    for (const image of images) {
+      const formData = new FormData();
+      formData.append("image", image);
+      formData.append("folder", folder);
+
+      try {
+        const response = await axios.post("/api/upload", formData, {
+          headers: { "Content-Type": "multipart/form-data" }
+        });
+        urls.push(response.data.url);
+        urls.push(response.data.public_id);
+      } catch (err) {
+        console.error("Image upload failed:", err);
+        setMessage("Image upload failed.");
+        alert(err);
+        return [];
+      }
+    }
+
+    return urls;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -32,46 +57,62 @@ const AddTestimonial = () => {
       return;
     }
 
-     // Upload image and get URLs
-    const uploadedUrls = await handleImageUpload({
-      images,
-      folder,
-      setMessage,
-      resetForm: handleReset,
-    });
+    if (images.length === 0) {
+      setStatus("❌ Please upload an image.");
+      return;
+    }
 
-    console.log("Uploaded image URLs:", uploadedUrls);
+    setMessage("Uploading image...");
 
-    const response = await addTestimonial(formData.name, formData.rating, formData.role, formData.testimonial);
+    const uploadedUrls = await handleImageUpload({ images, folder });
+
+    if (uploadedUrls.length === 0) {
+      setStatus("❌ Failed to upload image. (No Uploaded URLs)");
+      return;
+    }
+
+    const response = await addTestimonial(
+      formData.name,
+      formData.rating,
+      formData.role,
+      formData.testimonial,
+      uploadedUrls[0],
+      uploadedUrls[1],
+    );
 
     if (response.success) {
-      setStatus("Testimonial added successfully!");
+      setStatus("✅ Testimonial added successfully!");
       alert("Testimonial added successfully!");
-      setFormData({ name: "", rating: "", role: "", testimonial: "" });
+      handleReset();
     } else {
-      setStatus("Error adding testimonial!");
+      setStatus("❌ Error adding testimonial!");
       alert("Failed to add testimonial!");
     }
   };
 
   const handleReset = () => {
-    setFormData({
-      name: '',
-      rating: "",
-      role: '',
-      testimonial: '',
-    });
+    setFormData({ name: '', rating: "", role: '', testimonial: '' });
     setStatus(null);
+    setMessage('');
     setImages([]);
     setPreviewUrls([]);
   };
 
   return (
     <div className='flex justify-center w-full'>
-      <form action="" onSubmit={handleSubmit} className='flex flex-col my-0 px-10 w-[50%]'>
+      <form onSubmit={handleSubmit} className='flex flex-col my-0 px-10 w-[50%]'>
+        {previewUrls.length > 0 && (
+          <div className="my-2 flex gap-3 flex-wrap w-[70%] justify-center items-center">
+            {previewUrls.map((url, idx) => (
+              <img key={idx} src={url} alt="preview" className="w-36 h-36 object-cover rounded-full" />
+            ))}
+          </div>
+        )}
+
         <div className='my-4 flex justify-start items-center gap-4 w-[70%]'>
-          <label htmlFor="features">Client Image: </label>
-          <input type="file" id="image" name="image" onChange={handleImgChange} accept="image/*" className='input w-[70%] my-1'></input>
+          <label htmlFor="image">Client Image: </label>
+          <input type="file" id="image" name="image" onChange={handleImgChange} accept="image/*" className='input w-[70%] my-1' />
+          {message && <label htmlFor="text" className='text-red-500'>{message}</label>}
         </div>
 
         <div className='my-4 flex flex-col'>
@@ -94,15 +135,15 @@ const AddTestimonial = () => {
           <textarea name="testimonial" id="testimonial" value={formData.testimonial} onChange={handleChange} placeholder='Enter Testimonial' className='input w-[70%] my-1'></textarea>
         </div>
 
-        <div className='my-2 flex gap-5'>
-          <button type='submit' className='border px-3 rounded-lg'>Add</button>
-          <button onClick={handleReset} className='border px-3 rounded-lg'>Reset</button>
-        </div>
+        {status && <p className="my-2 text-lg">{status}</p>}
 
-        {/* {status && <p className="mt-2">{status}</p>} */}
+        <div className='my-2 flex gap-5'>
+          <button type='submit' className='border formBtn rounded-lg'>Add</button>
+          <button type="button" onClick={handleReset} className='border formBtn rounded-lg'>Reset</button>
+        </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default AddTestimonial
+export default AddTestimonial;

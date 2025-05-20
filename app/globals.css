@@ -119,3 +119,8 @@ body, p, span, li {
 .formBtn:hover{
   background: #495A54;
 }
+
+.thumbnailImg{
+  box-shadow: 5px 10px 20px black;
+  border: 3px solid var(--coral);
+}

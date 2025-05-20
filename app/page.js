@@ -9,6 +9,7 @@ const Page = () => {
   const [testimonialCount, setTestimonialCount] = useState(null);
   const [userCount, setUserCount] = useState(null);
   const [projectCount, setProjectCount] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCounts = async () => {
@@ -53,21 +54,21 @@ const Page = () => {
         <Link href="/Projects">
           <div className='card p-4 flex flex-col justify-start items-start'>
             <h1 className="text-[1em]">Total Projects:</h1>
-            <p className="text-7xl w-full flex justify-center items-center h-full">{projectCount !== null ? projectCount : "Loading..."}</p>
+            <p className="text-7xl w-full flex justify-center items-center h-full">{projectCount !== null ? projectCount : <span className="loader text-[20rem]"></span>}</p>
           </div>
         </Link>
 
         <Link href="/Testimonials">
           <div className='card p-4 flex flex-col justify-start items-start'>
             <h1 className="text-[1em]">Testimonials Registered:</h1>
-            <p className="text-7xl w-full flex justify-center items-center h-full">{testimonialCount !== null ? testimonialCount : "Loading..."}</p>
+            <p className="text-7xl w-full flex justify-center items-center h-full">{testimonialCount !== null ? testimonialCount : <span className="loader text-[20rem]"></span>}</p>
           </div>
         </Link>
 
         <Link href="/User">
           <div className='card p-4 flex flex-col justify-start items-start'>
             <h1 className="text-[1em]">Queries Asked:</h1>
-            <p className="text-7xl w-full flex justify-center items-center h-full">{userCount !== null ? userCount : "Loading..."}</p>
+            <p className="text-7xl w-full flex justify-center items-center h-full">{userCount !== null ? userCount : <span className="loader text-[20rem]"></span>}</p>
           </div>
         </Link>
       </div>

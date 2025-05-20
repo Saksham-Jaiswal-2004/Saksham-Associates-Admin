@@ -124,3 +124,18 @@ body, p, span, li {
   box-shadow: 5px 10px 20px black;
   border: 3px solid var(--coral);
 }
+
+.loader {
+  border: 3px solid rgba(169, 169, 169, 0.653);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

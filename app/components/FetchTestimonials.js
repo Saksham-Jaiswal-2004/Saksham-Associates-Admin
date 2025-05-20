@@ -58,7 +58,7 @@ const FetchTestimonials = () => {
 };
 
 
-  if (loading) return <div className="flex justify-center items-center"><p className="h-[80vh] flex justify-center items-center">Loading...</p></div>;
+  if (loading) return <div className="flex justify-center items-center h-[80vh]"><p className="loader text-[20rem]"></p></div>;
 
   return (
     <div>

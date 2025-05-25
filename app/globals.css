@@ -50,14 +50,14 @@ body, p, span, li {
 .sideNavBtn:hover{
   background-color: var(--beige);
   color: var(--deep-green);
-  border-radius: 5em;
+  border-radius: 0.5em;
   transform: scale(1.05);
 }
 
 .active {
   background-color: var(--beige);
   color: var(--deep-green);
-  border-radius: 5em;
+  border-radius: 0.5em;
   transform: scale(1.05);
 }
 

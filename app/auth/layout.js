@@ -1,11 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import SideNav from "./components/SideNav";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import jwt from "jsonwebtoken";
-
-const SECRET = process.env.JWT_SECRET;
+import "../globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +23,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <SideNav/>
         {children}
       </body>
     </html>

@@ -10,12 +10,32 @@ import { MdOutlineQuestionAnswer } from "react-icons/md";
 import { FaClipboardUser } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
 import { MdChevronRight } from "react-icons/md";
+import { useRouter } from 'next/navigation';
 
 const SideNav = () => {
 
   const pathname = usePathname();
   const userName = "Madhu J.";
   const role = "Admin";
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      const res = await fetch('/api/logout', {
+        method: 'POST',
+        credentials: 'include',
+      });
+
+      if (res.ok) {
+        // Redirect to login page after logout
+        router.push('/auth/login');
+      } else {
+        console.error('Logout failed');
+      }
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+  };
 
   return (
     <div className='h-screen fixed top-0 left-0 bg-[rgb(26,26,26)] w-[14%] flex flex-col items-center'>
@@ -29,6 +49,7 @@ const SideNav = () => {
         <li><Link href="\Testimonials" className={`relative cursor-pointer sideNavBtn px-2 py-1 w-full flex items-center gap-2 ${pathname === "/Testimonials" || pathname === "/AddTestimonials" ? "active" : ""}`}><MdRateReview /> Testimonials <MdChevronRight className='absolute right-0 mr-2' /></Link></li>
         <li><Link href="\Queries" className={`relative cursor-pointer sideNavBtn px-2 py-1 w-full flex items-center gap-2 ${pathname === "/Queries" ? "active" : ""}`}><MdOutlineQuestionAnswer /> Queries <MdChevronRight className='absolute right-0 mr-2' /></Link></li>
         <li><Link href="\Users" className={`relative cursor-pointer sideNavBtn px-2 py-1 w-full flex items-center gap-2 ${pathname === "/Users" ? "active" : ""}`}><FaClipboardUser /> Users <MdChevronRight className='absolute right-0 mr-2' /></Link></li>
+        <li className='w-full flex justify-center items-center mt-4'><button onClick={handleLogout} className='formBtn rounded-lg border'>Logout</button></li>
       </ul>
 
       <div className='userAvatar flex justify-center items-center gap-6 absolute bottom-0'>

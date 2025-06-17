@@ -58,6 +58,7 @@ const FetchUser = () => {
             <th className="w-[25%] py-4">Email</th>
             <th className="w-[15%] py-4">Phone</th>
             <th className="w-[20%] py-4">Password</th>
+            <th className="w-[20%] py-4">Role</th>
             <th></th>
           </tr>
         </thead>
@@ -74,6 +75,7 @@ const FetchUser = () => {
               <td><div className="justify-center items-center flex my-6">{item.Email}</div></td>
               <td><div className="justify-center items-center flex my-6">+{parsePhoneNumberFromString(item.Phone).countryCallingCode}-{parsePhoneNumberFromString(item.Phone).nationalNumber}</div></td>
               <td><div className="justify-center items-center flex my-6">{item.Password}</div></td>
+              <td><div className="justify-center items-center flex my-6">{item.admin? "Admin" : "User"}</div></td>
               <td className="rounded-r-[2rem]">
                 <div className="flex justify-center items-center text-xl mx-3 my-6">
                   <MdDelete className="text-xl link hover:text-red-600" onClick={() => handleDelete(item.id)} />

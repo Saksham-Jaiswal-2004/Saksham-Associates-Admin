@@ -88,12 +88,14 @@ body, p, span, li {
 
 .input{
   background: none;
-  border-bottom: 1px solid var(--beige);
+  border: 1px solid var(--beige);
+  padding: 0.6em 1em;
+  border-radius: 0.6em;
 }
 
 .input:focus{
   outline: none;
-  border-bottom: 1px solid var(--beige);
+  border: 1px solid var(--beige);
 }
 
 .userAvatar {

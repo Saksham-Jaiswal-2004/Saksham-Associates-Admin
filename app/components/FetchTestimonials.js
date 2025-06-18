@@ -76,7 +76,7 @@ const FetchTestimonials = () => {
         <tbody>
           {data.map((item) => (
             <tr key={item.id} className="row rounded-[2rem] my-0">
-              <td className="rounded-l-[2rem]"><div className="justify-center items-center flex h-fit py-4 my-2">
+              <td className="rounded-l-[1rem]"><div className="justify-center items-center flex h-fit py-4 my-2">
                 {item.createdAt?.toDate().toLocaleString("en-IN", {
                   dateStyle: "medium",
                   timeStyle: "short",
@@ -86,7 +86,7 @@ const FetchTestimonials = () => {
               <td><div className="justify-center items-center flex h-fit py-4 my-2">{item.rating}⭐</div></td>
               <td><div className="justify-center items-center flex h-fit py-4 my-2">{item.role}</div></td>
               <td><div className="justify-center items-center flex h-fit py-4 my-2">{item.testimonial.length > 150 ? `${item.testimonial.substring(0, 150)}...` : item.testimonial}</div></td>
-              <td className="rounded-r-[2rem]">
+              <td className="rounded-r-[1rem]">
                 <div className="flex justify-center items-center text-xl mx-3 my-2">
                   <MdDelete className="text-xl link hover:text-red-600" onClick={() => handleDelete(item.id, item.publicId)} />
                 </div>

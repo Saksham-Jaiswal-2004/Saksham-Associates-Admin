@@ -67,12 +67,14 @@ body, p, span, li {
 
 .row{
   margin-top: 3em;
-  background-color: var(--coral);
+  /* background-color: var(--coral); */
+  background-color: var(--teal);
 }
 
 .row:hover{
   box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
-  background-color: #d3815d;
+  /* background-color: #d3815d; */
+  background-color: var(--green);
 }
 
 .card{

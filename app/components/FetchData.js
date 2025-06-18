@@ -64,7 +64,7 @@ const FetchData = () => {
         <tbody>
           {data.map((item) => (
             <tr key={item.id} className="row rounded-[2rem] my-8">
-              <td className="rounded-l-[2rem]"><div className="justify-center items-center flex my-6">
+              <td className="rounded-l-[1rem]"><div className="justify-center items-center flex my-6">
                 {item.timestamp?.toDate().toLocaleString("en-IN", {
                   dateStyle: "medium",
                   timeStyle: "short",
@@ -74,7 +74,7 @@ const FetchData = () => {
               <td><div className="justify-center items-center flex my-6">{item.email}</div></td>
               <td><div className="justify-center items-center flex my-6">+{parsePhoneNumberFromString(item.phone).countryCallingCode}-{parsePhoneNumberFromString(item.phone).nationalNumber}</div></td>
               <td><div className="justify-center items-center flex my-6">{item.message}</div></td>
-              <td className="rounded-r-[2rem]">
+              <td className="rounded-r-[1rem]">
                 <div className="flex justify-center items-center text-xl mx-3 my-6">
                   <MdDelete className="text-xl link hover:text-red-600" onClick={() => handleDelete(item.id)} />
                 </div>

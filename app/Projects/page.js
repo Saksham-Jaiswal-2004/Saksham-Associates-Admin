@@ -1,22 +1,21 @@
 import React from 'react'
-import Link from 'next/link'
 import FetchProjects from '../components/FetchProjects'
-import AddButton from '../components/AddButton'
+import { PageHeader } from '../components/DashboardWidgets'
+
+export const dynamic = "force-dynamic";
 
 const page = () => {
   return (
-    <div className='h-fit w-full flex flex-col items-end justify-center'>
-      <div className='w-[86%] p-4 bg-[#041c1e] shadow-2xl fixed top-0 flex justify-between'>
-        <h1 className='text-3xl'>Projects</h1>
+    <div className='space-y-6'>
+      <PageHeader
+        eyebrow="Project pipeline"
+        title="Projects"
+        description="Track active interiors, approved concepts, and delivery timelines from a calmer, more readable board."
+        actionHref="/AddProjects"
+        actionLabel="Add project"
+      />
 
-        <Link href="/AddProjects">
-          <AddButton text="Project"/>
-        </Link>
-      </div>
-
-      <div className='w-[86%] mt-[4.2rem]'>
-        <FetchProjects />
-      </div>
+      <FetchProjects />
     </div>
   )
 }

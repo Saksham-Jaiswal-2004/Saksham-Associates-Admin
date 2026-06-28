@@ -1,16 +1,19 @@
 import React from 'react'
 import AddTestimonial from '../components/AddTestimonial'
+import { PageHeader } from '../components/DashboardWidgets'
+
+export const dynamic = "force-dynamic";
 
 const page = () => {
   return (
-    <div className='h-fit w-full flex flex-col items-end justify-center'>
-      <div className='w-[86%] fixed top-0 right-0 p-4 bg-[#041c1e] shadow-2xl'>
-        <h1 className='text-3xl'>Add New Testimonial</h1>
-      </div>
+    <div className='space-y-6'>
+      <PageHeader
+        eyebrow="Social proof"
+        title="Add new testimonial"
+        description="Keep the review pipeline fresh by capturing client feedback while the project is still top of mind."
+      />
 
-      <div className='w-[86%] right-0 mt-20'>
-        <AddTestimonial/>
-      </div>
+      <AddTestimonial/>
     </div>
   )
 }

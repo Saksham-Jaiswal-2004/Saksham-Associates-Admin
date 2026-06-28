@@ -1,9 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import SideNav from "./components/SideNav";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import jwt from "jsonwebtoken";
+import AdminShell from "./components/AdminShell";
 
 const SECRET = process.env.JWT_SECRET;
 
@@ -28,9 +25,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <SideNav/>
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--deep-green)] text-[var(--beige)]`}>
+        <AdminShell>{children}</AdminShell>
       </body>
     </html>
   );

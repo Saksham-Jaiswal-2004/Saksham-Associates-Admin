@@ -1,16 +1,19 @@
 import React from 'react'
 import Addproject from '../components/Addproject'
+import { PageHeader } from '../components/DashboardWidgets'
+
+export const dynamic = "force-dynamic";
 
 const page = () => {
   return (
-    <div className='h-fit w-full flex flex-col items-end justify-center'>
-      <div className='w-[86%] fixed top-0 right-0 p-4 bg-[#041c1e] shadow-2xl'>
-        <h1 className='text-3xl'>Add New Project</h1>
-      </div>
+    <div className='space-y-6'>
+      <PageHeader
+        eyebrow="Capture scope"
+        title="Add new project"
+        description="Log a fresh interior project with room details, imagery, and the context the team needs to move fast."
+      />
 
-      <div className='w-[86%] right-0 mt-14'>
-        <Addproject/>
-      </div>
+      <Addproject/>
     </div>
   )
 }

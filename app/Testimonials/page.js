@@ -1,22 +1,21 @@
 import React from 'react'
-import Link from 'next/link'
 import FetchTestimonials from '../components/FetchTestimonials'
-import AddButton from '../components/AddButton'
+import { PageHeader } from '../components/DashboardWidgets'
+
+export const dynamic = "force-dynamic";
 
 const page = () => {
   return (
-    <div className='h-fit w-full flex flex-col items-end justify-center'>
-      <div className='w-[86%] fixed top-0 right-0 p-4 bg-[#041c1e] shadow-2xl flex justify-between'>
-        <h1 className='text-3xl'>Testimonials</h1>
+    <div className='space-y-6'>
+      <PageHeader
+        eyebrow="Client proof"
+        title="Testimonials"
+        description="Curate the strongest feedback and pair it with projects that show the finished result."
+        actionHref="/AddTestimonials"
+        actionLabel="Add testimonial"
+      />
 
-        <Link href="/AddTestimonials">
-          <AddButton text="Testimonial"/>
-        </Link>
-      </div>
-
-      <div className='w-[86%] mt-[4.2rem]'>
-        <FetchTestimonials/>
-      </div>
+      <FetchTestimonials/>
     </div>
   )
 }
